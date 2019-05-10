@@ -1,0 +1,26 @@
+{
+  "name": "json-graphql-server-test",
+  "version": "1.0.0",
+  "description": "Testing GraphQL w/ JSON GraphQL Server.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pdehaan/json-graphql-server-test.git"
+  },
+  "keywords": [],
+  "author": "Peter deHaan <peter@deseloper.com> (https://about.me/peterdehaan)",
+  "license": "MPL-2.0",
+  "bugs": {
+    "url": "https://github.com/pdehaan/json-graphql-server-test/issues"
+  },
+  "homepage": "https://github.com/pdehaan/json-graphql-server-test#readme",
+  "dependencies": {
+    "express": "4.16.4",
+    "got": "9.6.0",
+    "json-graphql-server": "2.1.3"
+  }
+}
