@@ -19,6 +19,10 @@ async function main(app) {
     const breach = await getBreach(req.params.name);
     res.json(breach);
   });
+  app.get("/breaches/ids/:ids", async (req, res) => {
+    const breaches = await getBreachesById(req.params.ids.split(","));
+    res.json(breaches);
+  });
   app.use('/graphql', jsonGraphqlExpress({ breaches }));
   
   const server = app.listen(PORT, () => {
@@ -44,11 +48,16 @@ async function loadData() {
 }
 
 async function query(graphqlQuery) {
-  const {body} = await got(`http://localhost:3000/graphql/`, {
+  const {body} = await got(`http://localhost:${PORT}/graphql/`, {
     query: {query: graphqlQuery},
     json: true
   });
   return body.data;
+}
+
+async function getBreachesById(ids=[]) {
+  const res = await query(`{allBreaches(filter:{IsSensitive:false,IsVerified:true,IsRetired:false,IsFabricated:false,ids:${JSON.stringify(ids)}}){Name,AddedDate,Domain}}`);
+  return res.allBreaches;
 }
 
 
